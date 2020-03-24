@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {
-  constAndLet,
-
+  //constAndLet,
+  //arrowFunctions,
+  //destructuring,
+  //objAssemblyComputedProps,
 } from './examples';
 
 
 //constAndLet();
+//arrowFunctions();
+//destructuring();
+//objAssemblyComputedProps();
+
 
 ReactDOM.render(
   <React.StrictMode>
