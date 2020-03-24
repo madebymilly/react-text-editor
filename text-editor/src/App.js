@@ -4,13 +4,38 @@ import { Markup, Editor, Container, Column, Row, RuleInput, RuleLabel, StyleInpu
 class App extends React.Component {
 
   state = {
-    editor: ""
+    editor: "",
+    name0: "",
+    begin0: "",
+    end0: "",
+    style0: "",
+    rules: 1
   }
 
   handleChange = (event) => {
     let { name, value } = event.target;
     this.setState({
       [name]: value
+    })
+  }
+
+  newFields = () => {
+    this.setState( (prevState) => {
+      let { rules } = prevState;
+      let fields = ['name', 'begin', 'end', 'style'];
+      let inputValues = {};
+      fields.forEach((field) => {
+        inputValues = {
+          ...inputValues,
+          [`${field}${rules}`]: ''
+        }
+      })
+      rules++;
+      console.log({ rules, ...inputValues });
+      return {
+        rules,
+        ...inputValues
+      }
     })
   }
 
@@ -22,14 +47,14 @@ class App extends React.Component {
       <>
         <Container>
           <Column>
-            <Button>
+            <Button onClick={this.newFields}>
               New Rule
-                </Button>
+            </Button>
           </Column>
           <Column>
             <Button>
               Random Text
-                </Button>
+            </Button>
             <Document>
               <Editor name={"editor"}
                 value={value}

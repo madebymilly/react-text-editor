@@ -6,7 +6,18 @@ let options = () => {
 		"Content-Type": "application/json"
 	},
 	body: JSON.stringify({
-		// ...
+		// graphQL query:
+		query: `{
+			allPoems(
+				first: 1
+				skip: ${randomInt(0,160)}
+			) {
+				title
+				author
+				lines
+				text
+			}
+		}`
 	})
 };
 

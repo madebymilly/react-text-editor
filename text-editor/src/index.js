@@ -7,6 +7,7 @@ import {
   //arrowFunctions,
   //destructuring,
   //objAssemblyComputedProps,
+  //spreadOperator,
 } from './examples';
 
 
@@ -14,7 +15,7 @@ import {
 //arrowFunctions();
 //destructuring();
 //objAssemblyComputedProps();
-
+//spreadOperator();
 
 ReactDOM.render(
   <React.StrictMode>
