@@ -1,5 +1,9 @@
 import React from 'react';
 import { Markup, Editor, Container, Column, Row, RuleInput, RuleLabel, StyleInput, Button, Document } from './styled.js';
+import {rando} from './utils'
+
+console.log(rando)
+console.log(rando.randomInt(1, 10))
 
 class App extends React.Component {
 
@@ -17,6 +21,38 @@ class App extends React.Component {
     this.setState({
       [name]: value
     })
+  }
+
+  get rules () {
+    let { rules } = this.state
+    let array = []
+    let fields = ['name', 'begin', 'end']
+    for (let i = 0; i < rules; i++) {
+      array.push(
+        <Row key={i}>
+          <Column>
+            {fields.map((field, i) => {
+              return (
+                <Column key={i}>
+                  <RuleLabel>
+                    {field}
+                  </RuleLabel>
+                  <RuleInput value={this.state[`${field}${i}`]}
+                    onChange={this.handleChange}
+                    name={`${field}${i}`}
+                  />
+                </Column>
+              )
+            })}
+          </Column>
+          <StyleInput value={this.state[`style${i}`]}
+            onChange={this.handleChange}
+            name={`style${i}`}>
+          </StyleInput>
+        </Row>
+      )
+    }
+    return array;
   }
 
   newFields = () => {
@@ -42,12 +78,13 @@ class App extends React.Component {
   render() {
     // Destructing assignments:
     let { value } = this.state;
-    let { handleChange } = this;
+    let { handleChange, newFields, rules } = this;
     return (
       <>
         <Container>
           <Column>
-            <Button onClick={this.newFields}>
+            {rules}
+            <Button onClick={newFields}>
               New Rule
             </Button>
           </Column>

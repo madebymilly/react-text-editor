@@ -8,6 +8,7 @@ import {
   //destructuring,
   //objAssemblyComputedProps,
   //spreadOperator,
+  promises,
 } from './examples';
 
 
@@ -16,6 +17,7 @@ import {
 //destructuring();
 //objAssemblyComputedProps();
 //spreadOperator();
+promises();
 
 ReactDOM.render(
   <React.StrictMode>
